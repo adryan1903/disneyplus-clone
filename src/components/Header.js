@@ -1,40 +1,53 @@
 import styled from 'styled-components';
+import { auth, provider } from '../firebase';
 
 const Header = (props) => {
-  return ( 
-  <Nav>
+  const handleAuth = () => {
+    auth
+      .signInWithPopup(provider)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
+
+  return (
+    <Nav>
       <Logo>
-        <img src="/images/logo.svg" alt="Disney+" />
+        <img src='/images/logo.svg' alt='Disney+' />
       </Logo>
       <NavMenu>
-      <a href="/home">
-              <img src="/images/home-icon.svg" alt="HOME" />
-              <span>HOME</span>
-            </a>
-            <a>
-              <img src="/images/search-icon.svg" alt="SEARCH" />
-              <span>SEARCH</span>
-            </a>
-            <a>
-              <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
-              <span>WATCHLIST</span>
-            </a>
-            <a>
-              <img src="/images/original-icon.svg" alt="ORIGINALS" />
-              <span>ORIGINALS</span>
-            </a>
-            <a>
-              <img src="/images/movie-icon.svg" alt="MOVIES" />
-              <span>MOVIES</span>
-            </a>
-            <a>
-              <img src="/images/series-icon.svg" alt="SERIES" />
-              <span>SERIES</span>
-            </a>
+        <a href='/home'>
+          <img src='/images/home-icon.svg' alt='HOME' />
+          <span>HOME</span>
+        </a>
+        <a>
+          <img src='/images/search-icon.svg' alt='SEARCH' />
+          <span>SEARCH</span>
+        </a>
+        <a>
+          <img src='/images/watchlist-icon.svg' alt='WATCHLIST' />
+          <span>WATCHLIST</span>
+        </a>
+        <a>
+          <img src='/images/original-icon.svg' alt='ORIGINALS' />
+          <span>ORIGINALS</span>
+        </a>
+        <a>
+          <img src='/images/movie-icon.svg' alt='MOVIES' />
+          <span>MOVIES</span>
+        </a>
+        <a>
+          <img src='/images/series-icon.svg' alt='SERIES' />
+          <span>SERIES</span>
+        </a>
       </NavMenu>
-  </Nav>
-  )
-}
+      <Login onClick={handleAuth}>Log in</Login>
+    </Nav>
+  );
+};
 
 const Nav = styled.nav`
   position: fixed;
@@ -97,7 +110,7 @@ const NavMenu = styled.div`
         background-color: rgb(249, 249, 249);
         border-radius: 0px 0px 4px 4px;
         bottom: -6px;
-        content: "";
+        content: '';
         height: 2px;
         left: 0px;
         opacity: 0;
@@ -121,6 +134,21 @@ const NavMenu = styled.div`
   /* @media (max-width: 768px) {
     display: none;
   } */
+`;
+
+const Login = styled.a`
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 8px 16px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border: 1px solid #f9f9f9;
+  border-radius: 4px;
+  transition: all 0.2s ease 0s;
+  &:hover {
+    background-color: #f9f9f9;
+    color: #000;
+    border-color: transparent;
+  }
 `;
 
 export default Header;
