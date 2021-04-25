@@ -14,9 +14,6 @@
 # images
 images
 
-# firebase file
-firebase.js
-
 # misc
 .DS_Store
 .env.local
