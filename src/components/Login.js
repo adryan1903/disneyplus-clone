@@ -8,7 +8,7 @@ const Login = (props) => {
           <CTALogoOne src='/images/cta-logo-one.svg' alt='' />
           <SignUp>GET ALL THE BUNDLES</SignUp>
           <Description>
-            This is Adryan development version of Disney+.
+            <h2>This is Adryan development version of Disney+.</h2>
           </Description>
           <CTALogoTwo src='/images/cta-logo-two.png' alt='' />
         </CTA>
